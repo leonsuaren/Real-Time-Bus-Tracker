@@ -1,11 +1,19 @@
 #map { 
-  position: absolute; 
-  top: 100px; 
-  bottom: 0; 
-  width: 72%; 
+  width: 100%; 
   height: 500px;
 }
 
 .animate-button {
   margin: 5px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  gap: 1px;
+  grid-template-areas: 
+    "side content"
+  ;
+
+  margin-top: 20px;
 }

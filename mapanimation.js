@@ -1,32 +1,70 @@
-const weatherArray = [];
+var marker;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbnN1YXJlejEwIiwiYSI6ImNsMG4wajNkMTEwNWEzY28zMnNzZGtyamIifQ.fegQJGn9sTp4fAdo7NTBZw';
 
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-71.091542, 42.358862 ],
-    zoom: 12
+    center: [-118.183883, 33.955836 ],
+    zoom: 10
 });
 
-var marker = new mapboxgl.Marker()
-.setLngLat([-71.091542, 42.358862 ])
-.addTo(map);
+function showMarker () {
+  marker = new mapboxgl.Marker()
+  .setLngLat([-118.183883, 33.955836])
+  .addTo(map);
+}
 
-const busStops = [
-  [-71.093729, 42.359244],
-  [-71.094915, 42.360175],
-  [-71.0958, 42.360698],
-  [-71.099558, 42.362953],
-  [-71.103476, 42.365248],
-  [-71.106067, 42.366806],
-  [-71.108717, 42.368355],
-  [-71.110799, 42.369192],
-  [-71.113095, 42.370218],
-  [-71.115476, 42.372085],
-  [-71.117585, 42.373016],
-  [-71.118625, 42.374863],
-];
+map.on('load', () => {
+  map.addSource('route', {
+  'type': 'geojson',
+  'data': {
+  'type': 'Feature',
+  'properties': {},
+  'geometry': {
+  'type': 'LineString',
+  'coordinates': [
+    [-118.187199, 33.921381],
+    [-118.183883, 33.955836],
+    [-118.182576, 33.933707],
+    [-118.190169, 33.914194],
+    [-118.193283, 33.906704],
+    [-118.185732, 33.925698],
+    [-118.191828, 33.910166],
+    [-118.184687, 33.958259],
+    [-118.186841, 33.965883],
+    [-118.188167, 33.919017],
+  ]
+  }
+  }
+  });
+  map.addLayer({
+  'id': 'route',
+  'type': 'line',
+  'source': 'route',
+  'layout': {
+  'line-join': 'round',
+  'line-cap': 'round'
+  },
+  'paint': {
+  'line-color': 'blue',
+  'line-width': 8
+  }
+  });
+  });
+
+  const busStops = [
+    [-118.187199, 33.921381],
+    [-118.183883, 33.955836],
+    [-118.182576, 33.933707],
+    [-118.190169, 33.914194],
+    [-118.193283, 33.906704],
+    [-118.185732, 33.925698],
+    [-118.191828, 33.910166],
+    [-118.184687, 33.958259],
+    [-118.186841, 33.965883],
+    [-118.188167, 33.919017],
+  ];
 
 var counter = 0;
 
@@ -38,19 +76,28 @@ function move() {
     move();
   }, 1000);
 }
+ 
+// Add the control to the map.
+map.addControl(
+new MapboxGeocoder({
+accessToken: mapboxgl.accessToken,
+mapboxgl: mapboxgl
+})
+);
 
 //'mapbox://styles/mapbox/dark-v10'
 
+function sucessHandler(data) {
+  console.log(data.name);
+}
 // Fetch weather data
+async function fetchWeatherData () {
+  const url = 'https://api.openweathermap.org/data/2.5/weather?lat=39.1031&lon=-84.5120&appid=89e5d770eac3d99dee8786f4791aa5fb';
+  const response = await fetch(url);
+  const data = await response.text();
+  const obj = JSON.parse(data);
+  sucessHandler(obj)
+}
 
-
-// async function fetchWeatherData () {
-//   const url = 'https://api.openweathermap.org/data/2.5/weather?lat=39.1031&lon=-84.5120&appid=89e5d770eac3d99dee8786f4791aa5fb';
-//   const response = await fetch(url);
-//   const data = await response.text();
-//   const obj = JSON.parse(data);
-//   weatherArray.push(obj);
-// }
-// console.log(weatherArray);
-
-fetchWeatherData()
+fetchWeatherData();
+sucessHandler();
