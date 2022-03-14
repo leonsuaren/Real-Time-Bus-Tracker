@@ -88,11 +88,31 @@ mapboxgl: mapboxgl
 //'mapbox://styles/mapbox/dark-v10'
 
 function sucessHandler(data) {
-  console.log(data.name);
+  const dataObj = data;
+  const weatherDiv = document.getElementById('temp');
+  const weatherFragment = `
+    <h3>Weather</h3>
+    <h5>${dataObj.name}</h5>
+    <div class='center-img'>
+    <img 
+      src="http://openweathermap.org/img/w/${dataObj.weather[0].icon}.png"
+      alt="${dataObj.weather[0].description}"
+    />
+    </div>
+    <p>
+    <span class="tempF">${tempToF(dataObj.main.temp)}&deg;</span> | 
+    ${dataObj.weather[0].description}
+  </p>
+  `;
+  weatherDiv.innerHTML = weatherFragment;
+}
+
+function tempToF(kelvin) {
+  return ((kelvin - 273.15) * 1.8 + 32).toFixed(0);
 }
 // Fetch weather data
 async function fetchWeatherData () {
-  const url = 'https://api.openweathermap.org/data/2.5/weather?lat=39.1031&lon=-84.5120&appid=89e5d770eac3d99dee8786f4791aa5fb';
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&appid=89e5d770eac3d99dee8786f4791aa5fb';
   const response = await fetch(url);
   const data = await response.text();
   const obj = JSON.parse(data);
