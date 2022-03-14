@@ -87,6 +87,7 @@ mapboxgl: mapboxgl
 
 //'mapbox://styles/mapbox/dark-v10'
 
+//========Weather API Begin==========//
 function sucessHandler(data) {
   const dataObj = data;
   const weatherDiv = document.getElementById('temp');
@@ -118,6 +119,29 @@ async function fetchWeatherData () {
   const obj = JSON.parse(data);
   sucessHandler(obj)
 }
+
+//===========Weather End========//
+//===========Knews API begin========//
+
+function knewsSuccessHandler (data) {
+  const knewsObj = data.results;
+  const knewsOneDiv = document.getElementById('knewsOne');
+  const knewsOneFragment = `
+    <h3>Knews</h3>
+    <p>${knewsObj[0].title}</p>
+  `
+  console.log(knewsObj);
+  knewsOneDiv.innerHTML = knewsOneFragment;
+}
+
+async function fetchKnewsData() {
+  const url = 'https://newsdata.io/api/1/news?apikey=pub_5471c2f13f0b107554e22983dc66674168b5&country=us';
+  const response = await fetch(url);
+  const data = await response.text();
+  const obj = JSON.parse(data);
+  knewsSuccessHandler(obj);
+};
+fetchKnewsData();
 
 fetchWeatherData();
 sucessHandler();
