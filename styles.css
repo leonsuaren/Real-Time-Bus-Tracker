@@ -1,5 +1,5 @@
-#map { 
-  width: 100%; 
+#map {
+  width: 100%;
   height: 500px;
 }
 
@@ -11,9 +11,7 @@
   display: grid;
   grid-template-columns: 20% 80%;
   gap: 1px;
-  grid-template-areas: 
-    "side content"
-  ;
+  grid-template-areas: "side content";
   margin-top: 20px;
 }
 
@@ -31,11 +29,77 @@
 }
 
 .weather {
-  background-color: aqua;
+  background-color: #7fb3e8;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.link-to {
+  display: block;
+  text-decoration: none;
+  width: 200px;
+  height: 200px;
+  color: black;
+}
+
+img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  background: hsla(246, 40%, 30%, 0.6);
+  color: white;
+  font-size: 1.2em;
+  transition: all 0.4s;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.link-to:focus .caption,
+.link-to:hover .caption {
+  background: hsla(246, 40%, 30%, 1);
+}
+
+.caption-title {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.weather-title,
+.knews-title {
+  align-self: flex-start;
+  color: #3f2a2a;
+}
+
+.division {
+  margin: 0;
+  background-color: #000000;
+  height: 2px;
+  width: 100%;
+}
+
+.knews {
+  background-color: #cbdced;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
