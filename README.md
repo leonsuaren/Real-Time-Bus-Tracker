@@ -2,8 +2,6 @@
 
 ## What is about
 
-<hr>
-
 > This app keeps track of bus stops in the city of L.A. 
 > it shows the route and also shows the real-time weather in the city as well as some random news.
 
@@ -15,16 +13,12 @@
 
 ## How to see it in action?
 
-<hr/>
-
 > You have two options:
 
   * By clicking on this [link](https://leonsuaren.github.io/Real-Time-Bus-Tracker/), you will be redirected to the URL provided by Github.
   * Clon the Repo with this command ' *git clone https://github.com/leonsuaren/Real-Time-Bus-Tracker.git* ', once you have it in your computer just drag and drop the index.html in your browser or double click in the index.html and your browser will open it.
 
   ## Future improvements:
-
-  <hr />
 
   * Right now this APP is running with vanilla javascript, CSS, and HTML, but I would like to refactore it and create a React APP.
 
