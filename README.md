@@ -2,10 +2,10 @@
 
 ## What is about
 
+<hr>
+
 > This app keeps track of bus stops in the city of L.A. 
 > it shows the route and also shows the real-time weather in the city as well as some random news.
-
-<hr>
 
 > To keep track of the bus stops this app uses an API called [Mapbox](https://www.mapbox.com/) which allows you to interact with a map and add all the functionality that a nowadays virtual map provides 
 
@@ -15,12 +15,12 @@
 
 ## How to see it in action?
 
-> You have two options:
-
 <hr/>
 
+> You have two options:
+
   * By clicking on this [link](https://leonsuaren.github.io/Real-Time-Bus-Tracker/), you will be redirected to the URL provided by Github.
-  * Clon the Repo with this command ' *git clone https://github.com/leonsuaren/Real-Time-Bus-Tracker.git* ', once you have it in your computer just draw and drop the index.html in your browser or double click in the index.html and your browser will open it.
+  * Clon the Repo with this command ' *git clone https://github.com/leonsuaren/Real-Time-Bus-Tracker.git* ', once you have it in your computer just drag and drop the index.html in your browser or double click in the index.html and your browser will open it.
 
   ## Future improvements:
 
