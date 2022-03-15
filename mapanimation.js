@@ -90,6 +90,7 @@ map.addControl(
 //========Weather API Begin==========//
 function sucessHandler(data) {
   const dataObj = data;
+  console.log(data)
   const weatherDiv = document.getElementById('temp');
   const weatherFragment = `
     <h5 class='weather-title'>Weather</h5>
@@ -148,11 +149,11 @@ function knewsSuccessHandler(data) {
       </figure>
       </a>
       `
-      console.log(knewsObj);
       knewsOneDiv.innerHTML = knewsOneFragment;
     }
   }, 5000);
   counter = 0;
+  knewsSuccessHandler();
 }
 
 async function fetchKnewsData() {
